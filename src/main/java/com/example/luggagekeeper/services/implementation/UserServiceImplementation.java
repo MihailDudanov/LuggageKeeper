@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImplementation implements UserService {
 
@@ -29,16 +31,20 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public User register(String username, String email, String password, String repeatPassword, Role role) {
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public User register(String username, String email, String password, Role role) {
        if( username ==null || username.isEmpty() || password == null || password.isEmpty())
            throw new InvalidUsernameOrPasswordException();
-           if(!password.equals(repeatPassword)) {
-               throw new PasswordsDoNotMatchException();
-           }
+
+
         if (this.userRepository.findByUsername(username).isPresent())
             throw new UsernameAlreadyExistsException(username);
 
-       User user= new User(username, email,passwordEncoder.encode(password), passwordEncoder.encode(repeatPassword),role);
+       User user= new User(username, email,passwordEncoder.encode(password),role);
         return userRepository.save(user);
     }
 }

@@ -13,8 +13,9 @@ public class LuggageKeeperApplication {
         SpringApplication.run(LuggageKeeperApplication.class, args);
     }
 
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10);
+    }
 }
-@Bean
-PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder(10);
-}
+
