@@ -1,48 +1,22 @@
+package com.example.luggagekeeper.models.dto;
 
-package com.example.luggagekeeper.models;
-
+import com.example.luggagekeeper.models.Reservation;
 import com.example.luggagekeeper.models.enumerations.OrderStatus;
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "orders")
-public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @ManyToOne
-    @JoinColumn(name = "re_reservation")
+@Getter
+@Setter
+public class OrderDTO {
+
     private Reservation reservation;
-
-    @Column(name = "total_price")
     private Double total_price;
-
-    @Column(name = "order_status")
     private OrderStatus orderStatus;
-
-    @Column(name = "order_date")
     private Date orderDate;
-
-    public Order(Reservation reservation, Double total_price, OrderStatus orderStatus, Date orderDate) {
-        this.reservation = reservation;
-        this.total_price = total_price;
-        this.orderStatus = orderStatus;
-        this.orderDate = orderDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Reservation getReservation() {
         return reservation;
