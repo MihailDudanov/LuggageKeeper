@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("https://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/authentication")
 public class AuthController {
     private final AuthService authService;
