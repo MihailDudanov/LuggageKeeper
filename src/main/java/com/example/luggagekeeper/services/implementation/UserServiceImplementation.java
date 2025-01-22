@@ -43,8 +43,11 @@ public class UserServiceImplementation implements UserService {
 
         if (this.userRepository.findByUsername(username).isPresent())
             throw new UsernameAlreadyExistsException(username);
+        System.out.printf("USER PASSWORD: %s\n", password);
+        String encodedPassword = passwordEncoder.encode(password);
+        System.out.printf("ENCODED USER PASSWORD: %s\n", encodedPassword);
 
-       User user= new User(username, email,passwordEncoder.encode(password),role);
+        User user= new User(username, email, encodedPassword,role);
         return userRepository.save(user);
     }
 }

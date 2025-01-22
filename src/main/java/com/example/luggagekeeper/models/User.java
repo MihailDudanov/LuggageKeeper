@@ -3,11 +3,9 @@ import com.example.luggagekeeper.models.enumerations.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
 @Setter
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -27,10 +25,14 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
+    public User() {
+        super();
+    }
+
     public User(String username, String email, String password, Role role) {
         this.username = username;
         this.email = email;
-        password = password;
+        this.password = password;
         this.role = role;
     }
 

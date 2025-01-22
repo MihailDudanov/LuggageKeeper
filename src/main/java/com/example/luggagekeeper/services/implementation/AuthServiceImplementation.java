@@ -4,6 +4,7 @@ import com.example.luggagekeeper.exceptions.InvalidUserCredentialsException;
 import com.example.luggagekeeper.models.User;
 import com.example.luggagekeeper.repository.UserRepository;
 import com.example.luggagekeeper.services.AuthService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,8 +12,11 @@ public class AuthServiceImplementation implements AuthService {
 
     private final UserRepository userRepository;
 
-    public AuthServiceImplementation(UserRepository userRepository) {
+    private final PasswordEncoder passwordEncoder;
+
+    public AuthServiceImplementation(PasswordEncoder passwordEncoder, UserRepository userRepository) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
 @Override
@@ -28,8 +32,12 @@ public class AuthServiceImplementation implements AuthService {
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
             throw new InvalidUserCredentialsException();
         }
-        return userRepository.findByUsernameAndPassword(username,
-                password).orElseThrow(InvalidUserCredentialsException::new);
+        User user = userRepository.findByUsername(username).orElseThrow(InvalidUserCredentialsException::new);
+        if(passwordEncoder.matches(password, user.getPassword())) {
+            return user;
+        } else {
+            throw new InvalidUserCredentialsException();
+        }
     }
 
 }
