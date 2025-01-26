@@ -24,7 +24,7 @@ public class LuggageController {
         if(!luggages.isEmpty()){
             return ResponseEntity.ok(luggages);
         }
-        return ResponseEntity.ok().build();
+        return ResponseEntity.notFound().build();
     }
 
     @PostMapping("/add")
