@@ -7,9 +7,8 @@ import lombok.*;
 
 import java.util.Date;
 
-@Data
+
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -34,6 +33,10 @@ public class Order {
         this.total_price = total_price;
         this.orderStatus = orderStatus;
         this.orderDate = orderDate;
+    }
+
+    public Order() {
+        super();
     }
 
     public Long getId() {

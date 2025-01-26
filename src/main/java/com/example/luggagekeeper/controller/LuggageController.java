@@ -18,12 +18,13 @@ public class LuggageController {
     @Autowired
     private  LuggageService luggageService;
 
+    @GetMapping
     public ResponseEntity<List<Luggage>> showAllLuggages(){
         List<Luggage>luggages = this.luggageService.listAllLuggages();
         if(!luggages.isEmpty()){
             return ResponseEntity.ok(luggages);
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/add")

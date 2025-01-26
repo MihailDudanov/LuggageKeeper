@@ -1,6 +1,7 @@
 package com.example.luggagekeeper.models.dto;
 
 import com.example.luggagekeeper.models.Location;
+import com.example.luggagekeeper.models.Luggage;
 import com.example.luggagekeeper.models.User;
 import com.example.luggagekeeper.models.enumerations.OrderStatus;
 import jakarta.persistence.Column;
@@ -22,7 +23,7 @@ public class ReservationDTO {
     private Location location;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-
+    private Luggage luggage;
     public OrderStatus getOrderStatus() {
         return orderStatus;
     }
@@ -61,5 +62,13 @@ public class ReservationDTO {
 
     public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
+    }
+
+    public Luggage getLuggage() {
+        return luggage;
+    }
+
+    public void setLuggage(Luggage luggage) {
+        this.luggage = luggage;
     }
 }

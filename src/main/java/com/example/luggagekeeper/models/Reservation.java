@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "reservations")
 public class Reservation {
@@ -36,6 +35,16 @@ public class Reservation {
 
     @Column(name = "end_date")
     private LocalDateTime endDate;
+
+    @ManyToOne
+    @JoinColumn(name = "lu_luggage")
+    private Luggage luggage;
+
+
+
+    public Reservation( ) {
+       super();
+    }
 
     public Long getId() {
         return id;
@@ -64,7 +73,13 @@ public class Reservation {
     public Location getLocation() {
         return location;
     }
+    public Luggage getLuggage() {
+        return luggage;
+    }
 
+    public void setLuggage(Luggage luggage) {
+        this.luggage = luggage;
+    }
     public void setLocation(Location location) {
         this.location = location;
     }

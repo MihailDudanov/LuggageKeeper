@@ -6,9 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "luggage")
 public class Luggage {
@@ -33,6 +31,10 @@ public class Luggage {
         this.weightLimit = weightLimit;
         this.size = size;
         this.availability = availability;
+    }
+
+    public Luggage() {
+        super();
     }
 
     public Long getId() {

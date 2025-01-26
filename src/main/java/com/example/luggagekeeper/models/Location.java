@@ -5,9 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "location")
 public class Location {
@@ -28,6 +27,10 @@ public class Location {
         this.name = name;
         this.address = address;
         this.capacity = capacity;
+    }
+
+    public Location() {
+        super();
     }
 
     public Long getId() {
