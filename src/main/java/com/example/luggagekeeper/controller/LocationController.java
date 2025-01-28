@@ -19,6 +19,7 @@ public class LocationController {
     public LocationController(LocationService locationService) {
         this.locationService = locationService;
     }
+  @GetMapping
     public ResponseEntity<List<Location>> showAllLocations(){
         List<Location>locations = this.locationService.listAllLocations();
         if(!locations.isEmpty()){
