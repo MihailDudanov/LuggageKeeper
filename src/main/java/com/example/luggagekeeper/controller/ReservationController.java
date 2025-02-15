@@ -107,6 +107,11 @@ public class ReservationController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteReservation(@PathVariable Long id) {
+        reservationService.deleteReservation(id);
+        return ResponseEntity.noContent().build();
+    }
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<Page<Reservation>> getReservationsByUserId(@PathVariable Long userId, Pageable pageable) {
