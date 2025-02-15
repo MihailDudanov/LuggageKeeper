@@ -1,7 +1,6 @@
 package com.example.luggagekeeper.services.implementation;
 
 import com.example.luggagekeeper.exceptions.InvalidUsernameOrPasswordException;
-import com.example.luggagekeeper.exceptions.PasswordsDoNotMatchException;
 import com.example.luggagekeeper.exceptions.UsernameAlreadyExistsException;
 import com.example.luggagekeeper.models.User;
 import com.example.luggagekeeper.models.enumerations.Role;
@@ -27,7 +26,7 @@ public class UserServiceImplementation implements UserService {
     }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return (UserDetails) userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
     }
 
     @Override

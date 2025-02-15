@@ -19,11 +19,10 @@ import java.time.LocalDateTime;
 public class ReservationDTO {
 
     private OrderStatus orderStatus;
-    private User user;
-    private Location location;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private Luggage luggage;
+    private String location;
+    private String startDate;
+    private String endDate;
+    private String luggageID;
     public OrderStatus getOrderStatus() {
         return orderStatus;
     }
@@ -32,43 +31,35 @@ public class ReservationDTO {
         this.orderStatus = orderStatus;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Location getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
-    public LocalDateTime getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
-    public Luggage getLuggage() {
-        return luggage;
+    public String getLuggageID() {
+        return luggageID;
     }
 
-    public void setLuggage(Luggage luggage) {
-        this.luggage = luggage;
+    public void setLuggageID(String luggageID) {
+        this.luggageID = luggageID;
     }
 }
